@@ -1,7 +1,7 @@
 
 export const initialState = {
     total: 0,
-    items: [{ id: 6, title: "Chicken", caption: "contain 8 pics", price: 12.33, imgUrl: "assets/orange.png", amount: 10 }, { id: 9, title: "Chicken", caption: "contain 8 pics", price: 12.33, imgUrl: "assets/delivery-bike.png", amount: 8 }]
+    items: []
 }
 
 export const productReducer = (state, action) => {

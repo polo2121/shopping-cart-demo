@@ -12,6 +12,7 @@ export const ProductContext = createContext({
     addToBusket: (product) => { },
     removeFromBusket: (product) => { },
     getCartTotalAmount: () => { },
+    getCartTotalPrice: () => { },
     openBusket: () => { },
     isBusketOpen: false,
 });
@@ -20,6 +21,10 @@ export const ProductProvider = ({ children }) => {
     const [shoppingCart, dsipatch] = useReducer(productReducer, initialState)
     const [isBusketOpen, setIsBusketOpen] = useState(false);
 
+    const openBusket = () => {
+        // console.log("busket is open at context")
+        setIsBusketOpen(!isBusketOpen)
+    }
 
     const addToBusket = (product) => {
         dsipatch({ type: "ADD_TO_BUSKET", payload: product })
@@ -43,18 +48,33 @@ export const ProductProvider = ({ children }) => {
     }
 
     const getCartTotalAmount = () => {
-        let cartTotalAmount = 0;
 
-        shoppingCart.items.map(cartItem => {
-            cartTotalAmount += cartItem.amount;
-        })
+        const { items } = shoppingCart
+        console.log(items)
+
+        const cartTotalAmount = items.length > 0 ? items.reduce((preValue, currentValue) => (preValue + currentValue.amount), 0) : 0
+
         return cartTotalAmount;
     }
 
-    const openBusket = () => {
-        // console.log("busket is open at context")
-        setIsBusketOpen(!isBusketOpen)
+    const getCartTotalPrice = () => {
+        const { items } = shoppingCart
+
+        let cartTotalPrice = items.length > 0 ? items.reduce((previousValue, currentValue) => (previousValue + currentValue.price), 0) : 0
+
+        const cartTotalAmount = getCartTotalAmount();
+
+        cartTotalPrice = cartTotalPrice * cartTotalAmount
+
+        console.log(cartTotalPrice)
+        return cartTotalPrice;
     }
+
+    const getShoppingCartTotalValues = (value) => {
+
+    }
+
+
 
     const value = {
         items: shoppingCart.items,
@@ -63,6 +83,7 @@ export const ProductProvider = ({ children }) => {
         addToBusket,
         removeFromBusket,
         getCartTotalAmount,
+        getCartTotalPrice,
         openBusket,
         isBusketOpen,
     }

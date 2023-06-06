@@ -16,18 +16,20 @@ const ShoppingBusket = () => {
     return (
         <>
             {
-                isBusketOpen && (<div className='shopping-busket-backdrop' onClick={openBusket}>
+                isBusketOpen &&
+                (<div className='shopping-busket-backdrop' onClick={openBusket}>
                     <div className='shopping-busket-wrapper' onClick={(e) => e.stopPropagation()}>
                         <CartItems>
-                            {items.map(item =>
-                                (<CartItem key={item.id} product={item} />)
-                            )}
+                            {
+                                items.length > 0
+                                    ? items.map(item => (<CartItem key={item.id} product={item} />))
+                                    : <div className='no-item'><p>No item</p></div>
+                            }
                         </CartItems>
                         <TotalPrice>
                             <CheckoutButton />
                         </TotalPrice>
                     </div>
-
                 </div>)
             }
         </>

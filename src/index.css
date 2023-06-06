@@ -391,6 +391,56 @@ button.checkout svg {
   bottom: 0;
   z-index: 1;
 }
+.no-item{
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+  height: 100%;
+}
+.close-busket {
+  /* width: 32px;
+  height: 32px;
+  border-radius: 50%; */
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem;
+  stroke: #BFC7C7;
+  scale: 0.4;
+  z-index: 1;
+  transition: 0.1s color ease-in;
+
+}
+.close-busket::before {
+  content: '';
+  position: absolute;
+   width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  z-index: -1;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  scale: 0.1;
+  transition: 0.1s scale ease-in;
+}
+.close-busket > svg {
+}
+.close-busket:hover svg{
+  stroke: #272626;
+}
+.close-busket:hover::before
+{
+  scale: 1;
+}
+.no-item > p {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #BFC7C7;
+
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
