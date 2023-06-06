@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "title": "Amekia Chicken",
+      "caption": "contain 8 pics",
+      "price": 10.99,
+      "imgUrl": "assets/orange.png"
+    },
+    {
+      "id": 2,
+      "title": "Sweet Apple",
+      "caption": "contain 5 pics",
+      "price": 11.99,
+      "imgUrl": "assets/orange.png"
+
+    },
+    {
+      "id": 3,
+      "title": "Fresh Mango",
+      "caption": "contain 4 pics",
+      "price": 1.05,
+      "imgUrl": "assets/orange.png"
+
+    },
+    {
+      "id": 4,
+      "title": "Mikan Orange",
+      "caption": "Import from Japan",
+      "price": 13.9,
+      "imgUrl": "assets/orange.png"
+
+    }
+  ]
