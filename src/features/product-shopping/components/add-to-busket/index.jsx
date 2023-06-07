@@ -68,7 +68,6 @@ export const RemoveButton = ({ onRemove, productAmount }) => {
 
         });
 
-    console.log(removeBtn)
     return (
         <button className={removeBtn} onClick={onRemove}>
             <a>

@@ -36,7 +36,6 @@ export const ProductProvider = ({ children }) => {
 
     const getItemAmount = (id) => {
         const { items } = shoppingCart
-        console.log(items)
         const result = items.find(({ id: item_id }) => item_id === id);
         let amount;
         if (!result) {
@@ -50,7 +49,7 @@ export const ProductProvider = ({ children }) => {
     const getCartTotalAmount = () => {
 
         const { items } = shoppingCart
-        console.log(items)
+        // console.log(items)
 
         const cartTotalAmount = items.length > 0 ? items.reduce((preValue, currentValue) => (preValue + currentValue.amount), 0) : 0
 
@@ -60,21 +59,15 @@ export const ProductProvider = ({ children }) => {
     const getCartTotalPrice = () => {
         const { items } = shoppingCart
 
-        let cartTotalPrice = items.length > 0 ? items.reduce((previousValue, currentValue) => (previousValue + currentValue.price), 0) : 0
+        let cartTotalPrice = items.length > 0 ? items.reduce((previousValue, currentValue) => (previousValue + (currentValue.price * currentValue.amount)), 0) : 0
 
-        const cartTotalAmount = getCartTotalAmount();
-
-        cartTotalPrice = cartTotalPrice * cartTotalAmount
-
-        console.log(cartTotalPrice)
-        return cartTotalPrice;
+        // console.log(cartTotalPrice.toFixed(2))
+        return cartTotalPrice.toFixed(2);
     }
 
     const getShoppingCartTotalValues = (value) => {
 
     }
-
-
 
     const value = {
         items: shoppingCart.items,

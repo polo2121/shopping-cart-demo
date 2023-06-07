@@ -1,4 +1,3 @@
-
 export const initialState = {
     total: 0,
     items: []
@@ -31,6 +30,7 @@ export const productReducer = (state, action) => {
 
             if (foundRemoveItem) {
                 const removedItem = manageCartAmount(removeItemInfo, "remove")
+
                 return {
                     ...state,
                     items: removedItem
@@ -47,14 +47,22 @@ export const productReducer = (state, action) => {
 
     function manageCartAmount(itemInfo, action) {
 
-        const itemInCart = [...state.items]
+        let itemInCart = [...state.items]
         const updateItemIndex = itemInCart.findIndex(item => item.id === itemInfo.id);
         console.log(itemInCart)
 
         if (action === "add")
             itemInCart[updateItemIndex] = { ...itemInCart[updateItemIndex], amount: itemInCart[updateItemIndex].amount + 1 };
-        else
+        else {
             itemInCart[updateItemIndex] = { ...itemInCart[updateItemIndex], amount: itemInCart[updateItemIndex].amount - 1 };
+            if (itemInCart[updateItemIndex].amount === 0) {
+                const updatedBusket = itemInCart.filter((item) => item.id != itemInCart[updateItemIndex].id);
+                itemInCart = [...updatedBusket]
+                console.log(updatedBusket)
+
+            }
+        }
+
 
         const updatedItem = itemInCart;
 
